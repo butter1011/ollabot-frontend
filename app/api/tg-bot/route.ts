@@ -33,6 +33,7 @@ export async function POST(request: Request) {
         bot = new TelegramBot(botToken, { polling: true });
         console.log(bot);
         bot.on('message', async (msg) => {
+            console.log("Here");
             const chatId = msg.chat.id;
             const userInput = msg.text;
 
