@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     // Initialize the bot if not already initialized
     if (!bot || bot.options.token !== botToken) {
         bot = new TelegramBot(botToken, { polling: true });
-
+        console.log(bot);
         bot.on('message', async (msg) => {
             const chatId = msg.chat.id;
             const userInput = msg.text;
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
             console.log(userInput);
             console.log(typeof (userInput));
 
-            bot.sendMessage(chatId, "GH");
+            bot.sendMessage(chatId, "Good morning");
             // if (userInput === "/start") {
             //     bot.sendMessage(chatId, "Hello! I'm an AI Agent. How may I help you?");
             // }
