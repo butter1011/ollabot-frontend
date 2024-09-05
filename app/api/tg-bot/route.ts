@@ -36,10 +36,12 @@ export async function POST(request: Request) {
             const chatId = msg.chat.id;
             const userInput = msg.text;
 
-            if (userInput == "/start") {
+            console.log(userInput);
+            console.log(typeof (userInput));
+
+            if (userInput === "/start") {
                 bot.sendMessage(chatId, "Hello! I'm an AI Agent. How may I help you?");
             }
-
             else {
                 const data = new FormData();
                 data.append('bot_id', botId); // Ensure chatId is a string
@@ -69,7 +71,6 @@ export async function POST(request: Request) {
                     bot.sendMessage(chatId, 'An error occurred while processing your request.');
                 }
             }
-
 
         });
     }
