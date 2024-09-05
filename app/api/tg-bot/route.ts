@@ -36,33 +36,41 @@ export async function POST(request: Request) {
             const chatId = msg.chat.id;
             const userInput = msg.text;
 
-            const data = new FormData();
-            data.append('bot_id', botId); // Ensure chatId is a string
-            data.append('message', userInput);
-            data.append('description', description);
-
-            console.log("apiUrl", apiUrl, "userInput", userInput, "chatId", chatId);
-
-            try {
-                const response = await axios.post(`${apiUrl}/chat`, data, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                        ...data.getHeaders(), // Include FormData headers
-                    },
-                });
-
-                console.log("response ::: ", response.data);
-
-                // Check if the response contains the expected data
-                if (response.data && response.data.content) {
-                    bot.sendMessage(chatId, response.data.content);
-                } else {
-                    bot.sendMessage(chatId, 'Sorry, I did not understand that.');
-                }
-            } catch (error) {
-                console.error('Error while sending message:', error);
-                bot.sendMessage(chatId, 'An error occurred while processing your request.');
+            if (userInput == "/start") {
+                bot.sendMessage(chatId, "Hello! I'm an AI Agent. How may I help you?");
             }
+
+            else {
+                const data = new FormData();
+                data.append('bot_id', botId); // Ensure chatId is a string
+                data.append('message', userInput);
+                data.append('description', description);
+
+                console.log("apiUrl", apiUrl, "userInput", userInput, "chatId", chatId);
+
+                try {
+                    const response = await axios.post(`${apiUrl}/chat`, data, {
+                        headers: {
+                            Authorization: `Bearer ${apiKey}`,
+                            ...data.getHeaders(), // Include FormData headers
+                        },
+                    });
+
+                    console.log("response ::: ", response.data);
+
+                    // Check if the response contains the expected data
+                    if (response.data && response.data.content) {
+                        bot.sendMessage(chatId, response.data.content);
+                    } else {
+                        bot.sendMessage(chatId, 'Sorry, I did not understand that.');
+                    }
+                } catch (error) {
+                    console.error('Error while sending message:', error);
+                    bot.sendMessage(chatId, 'An error occurred while processing your request.');
+                }
+            }
+
+
         });
     }
 
