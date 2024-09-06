@@ -32,15 +32,17 @@ export async function POST(request: Request) {
 
     // Initialize the bot if not already initialized
     if (!bot || bot.options.token !== botToken) {
-        bot = new TelegramBot(botToken, { polling: true });
-        const webhookUrl = `${baseUrl}/api/chatbot/${botId}/telegram`;
+        // bot = new TelegramBot(botToken, { polling: true });
+        const webhookUrl = `${baseUrl}/api/chatbot/${botId}/telegram/${botToken}`;
         console.log(webhookUrl);
         try {
-            // const response = await fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${webhookUrl}`);
-            await bot.setWebHook(`${webhookUrl}/bot${botToken}`);
+            await fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${webhookUrl}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
             console.log('Webhook set successfully');
         } catch (error) {
-            console.error('Error setting webhook:');
+            console.error('Error setting webhook:', error);
         }
 
         // bot.on('message', async (msg) => {

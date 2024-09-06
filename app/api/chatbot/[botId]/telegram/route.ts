@@ -5,27 +5,16 @@ import axios from 'axios'
 export async function POST(request: Request, { params }) {
     const apiKey = process.env.SERVER_API_KEY
     const apiUrl = process.env.OLLABOT_SERVER
-    const { botId } = params
-
-    // const formData = new FormData()
+    const { botId, botToken } = params
+    console.log(botId);
+    const formData = new FormData()
     // const body = await request.formData()
     // console.log(body);
-    console.log("botId", botId);
 
     const data = await request.json();
-    console.log(data.message.chat.id);
+    console.log(data);
 
-    await fetch(`https://api.telegram.org/bot7265310096:AAFb6WmKeN9C1zPqy9hDfTNNCXT-cm77KXM/sendMessage`, {
-        method: 'POST',
-        body: JSON.stringify({
-            chat_id: data.message.chat.id,
-            text: "response",
-            reply_to_message_id: data.message.message_id
-        }),
-        headers: { 'Content-Type': 'application/json' }
-    });
 
-    return new Response(JSON.stringify({ "ss": "fds" }), { status: 200 });
     // formData.append('bot_id', botId)
     // formData.append('message', body.get('message'))
     // formData.append('description', body.get('description'))
@@ -52,4 +41,16 @@ export async function POST(request: Request, { params }) {
     //         status: 500,
     //     })
     // }
+
+    // await fetch(`https://api.telegram.org/bot7265310096:AAFb6WmKeN9C1zPqy9hDfTNNCXT-cm77KXM/sendMessage`, {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         chat_id: data.message.chat.id,
+    //         text: "response",
+    //         reply_to_message_id: data.message.message_id
+    //     }),
+    //     headers: { 'Content-Type': 'application/json' }
+    // });
+
+    return new Response(JSON.stringify({ "ss": "fds" }), { status: 200 });
 }
