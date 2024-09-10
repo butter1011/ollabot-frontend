@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     // Check if botToken is provided
     if (!botToken) {
-        return new Response(JSON.stringify({ message: 'Bot token is required' }), { status: 400 });
+        return new Response(JSON.stringify({ message: 'tokenerror' }), { status: 400 });
     }
 
     // Initialize the bot if not already initialized
@@ -89,5 +89,5 @@ export async function POST(request: Request) {
         // });
     }
 
-    return new Response(JSON.stringify({ message: 'Bot started successfully' }), { status: 200 });
+    return new Response(JSON.stringify({ message: 'success' }), { status: 200 });
 }
