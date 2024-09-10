@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { usePathname } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Translations = {
   heading: string
@@ -60,6 +62,7 @@ export default function EmbedPageClient({
       })
 
       const result = await response.json()
+      
       console.log(result) // Handle the response as needed
     } catch (error) {
       console.error('Error submitting bot token:', error)

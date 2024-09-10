@@ -134,6 +134,7 @@
     "react-merge-refs": "^2.1.1",
     "react-player": "^2.15.1",
     "react-textarea-autosize": "^8.5.3",
+    "react-toastify": "^10.0.5",
     "react-uploader": "^3.43.0",
     "recharts": "^2.12.6",
     "recoil": "^0.7.7",
