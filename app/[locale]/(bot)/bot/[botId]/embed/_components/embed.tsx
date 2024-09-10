@@ -62,7 +62,8 @@ export default function EmbedPageClient({
       })
 
       const result = await response.json()
-      if (result.status == 200) toast.success('Success!');
+      if (result.status === 'success') toast.success('Success!');
+      else toast.error('Failed!');
       console.log(result) // Handle the response as needed
     } catch (error) {
       console.error('Error submitting bot token:', error)
