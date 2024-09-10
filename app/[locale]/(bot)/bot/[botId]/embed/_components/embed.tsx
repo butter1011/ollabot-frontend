@@ -62,7 +62,7 @@ export default function EmbedPageClient({
       })
 
       const result = await response.json()
-      if (result.status === 'success') toast.success('Success!');
+      if (result.message === 'success') toast.success('Success!');
       else toast.error('Failed!');
       console.log(result) // Handle the response as needed
     } catch (error) {
