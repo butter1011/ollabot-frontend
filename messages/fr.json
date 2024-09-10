@@ -201,7 +201,7 @@
     },
     "telegram": {
       "name": "Telegram",
-      "description": "blockchain dev"
+      "description": "Intégrez l'assistant chatbot Ollabot à votre bot Telegram pour aider les visiteurs et améliorer l'expérience utilisateur."
     }
   },
   "Loading": {
